@@ -128,7 +128,7 @@ def ping(host, timeout=1):
        else:
             pingvalues.append(0)
 
-       print(delay)
+       #print(delay)
        #print("Reply from " + str(dest) + ": bytes=36 time=" + str(delay) + "ms TTL=117")
        time.sleep(1)  # one second
 
@@ -143,7 +143,7 @@ def ping(host, timeout=1):
    #vars = str(round(packet_min))
    #print(vars)
    print("")
-   print ("round trip min/avg/max/stddev = ", packet_min, packet_avg, packet_max,stdev_var)
+   #print ("round trip min/avg/max/stddev = ", packet_min, packet_avg, packet_max,stdev_var)
    return pingvalues
    return vars
 
