@@ -118,7 +118,6 @@ def ping(host, timeout=1):
    # Calculate vars values and return them
    pingvalues = []
 
-   #vars = [str(round(packet_min, 2)), str(round(packet_avg, 2)), str(round(packet_max, 2)),str(round(stdev(stdev_var), 2))]
 
    # Send ping requests to a server separated by approximately one second
    for i in range(0,4):
@@ -128,25 +127,26 @@ def ping(host, timeout=1):
        else:
             pingvalues.append(0)
 
-       #print(delay)
+       print(delay)
        #print("Reply from " + str(dest) + ": bytes=36 time=" + str(delay) + "ms TTL=117")
        time.sleep(1)  # one second
 
    pingvalues.sort()
-   print (pingvalues)
 
-   packet_min = [min(pingvalues)]
-   packet_avg = [sum(pingvalues)/4]
-   packet_max = [max(pingvalues)]
-   stdev_var  = [stdev(pingvalues)]
-   #vars = [round(packet_min, 2), round(packet_avg, 2), round(packet_max, 2), round(stdev_var, 2)]
-   #vars = str(round(packet_min))
-   #print(vars)
-   print("")
+   packet_min = min(pingvalues)
+   packet_avg = sum(pingvalues) / 4
+   packet_max = max(pingvalues)
+   stdev_var = stdev(pingvalues)
+
+   #vars = [str(round(packet_min, 2)), str(round(packet_avg, 2)), str(round(packet_max, 2)), str(round(stdev(stdev_var), 2))]
+   vars = [str(round(packet_min, 2)), str(round(packet_avg, 2)), str(round(packet_max, 2)), str(round(stdev_var, 2))]
+
+   print(vars)
+   #print("")
    #print ("round trip min/avg/max/stddev = ", packet_min, packet_avg, packet_max,stdev_var)
    return pingvalues
    return vars
 
 if __name__ == '__main__':
-   ping("no.no.e")
+   ping("sbg.mslo.com")
    ping("google.co.il")
